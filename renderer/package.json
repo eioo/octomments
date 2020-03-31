@@ -1,0 +1,55 @@
+{
+  "name": "octomments-renderer",
+  "version": "1.0.3",
+  "description": "The default renderer for Octomments",
+  "main": "build/ocs-ui.js",
+  "scripts": {
+    "clean": "rm -rf ./build/*",
+    "minify-css": "cleancss -o ./build/ocs-ui.min.css ./src/css/renderer.css",
+    "copy-css": "cp ./src/css/renderer.css ./build/ocs-ui.css",
+    "dev": "concurrently \"rollup -w -c\" \"yarn copy-css\" \"onchange './src/css/renderer.css' -- yarn copy-css\"",
+    "build": "yarn clean && rollup -c && uglifyjs --compress --mangle --output build/ocs-ui.min.js -- build/ocs-ui.js && yarn minify-css && yarn copy-css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krasimir/octomments.git"
+  },
+  "keywords": [
+    "github",
+    "issues",
+    "comments",
+    "api"
+  ],
+  "author": "Krasimir Tsonev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krasimir/octomments/issues"
+  },
+  "homepage": "https://github.com/krasimir/octomments",
+  "devDependencies": {
+    "@babel/core": "7.8.0",
+    "@babel/preset-env": "7.7.7",
+    "@rollup/plugin-commonjs": "11.0.1",
+    "@rollup/plugin-node-resolve": "7.0.0",
+    "babel-eslint": "9.0.0",
+    "clean-css-cli": "4.3.0",
+    "concurrently": "5.0.2",
+    "cpx": "1.5.0",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb": "17.1.1",
+    "eslint-config-prettier": "4.3.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "5.0.5",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.18.0",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "onchange": "6.1.0",
+    "prettier": "1.19.1",
+    "rollup": "1.29.0",
+    "rollup-plugin-babel": "4.3.3",
+    "uglify-js": "3.7.5"
+  },
+  "dependencies": {}
+}
